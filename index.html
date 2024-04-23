@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            text-align: center;
+        }
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 4px;
+            outline: none;
+            border: 1px solid gray;
+            height: 30px;
+            width: 300px;
+        }
+        button {
+            padding: 10px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: blue;
+            border-radius: 4px;
+            border: 2px solid blue;
+            color: white;
+            font-weight: bold;
+            outline: none;
+            height: 45px;
+        }
+        button:hover{
+            background-color: rgb(55, 55, 229);
+        }
+        #result {
+            margin-top: 16px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Palindrome Checker</h1>
+        <input type="text" id="inputString" placeholder="Enter a string">
+        <button onclick="checkPalindrome()">Check</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function isPalindrome(str) {
+            const lowerCaseStr = str.toLowerCase();
+            let start = 0;
+            let end = lowerCaseStr.length - 1;
+            while (start < end) {
+                if (lowerCaseStr[start] !== lowerCaseStr[end]) {
+                    return false;
+                }
+                start++;
+                end--;
+            }
+            return true;
+        }
+
+        function checkPalindrome() {
+            const inputString = document.getElementById('inputString').value;
+            const resultElement = document.getElementById('result');
+            if (isPalindrome(inputString)) {
+                resultElement.innerText = `"${inputString}" is a palindrome.`;
+            } else {
+                resultElement.innerText = `"${inputString}" is not a palindrome.`;
+            }
+        }
+    </script>
+</body>
+</html>
